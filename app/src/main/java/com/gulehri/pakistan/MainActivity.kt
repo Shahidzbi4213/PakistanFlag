@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(color = MaterialTheme.colorScheme.background),
                 ) {
-                    MainScreen(mainViewModel = mainViewModel)
+                    FeedbackScreen()
                 }
 
             }
