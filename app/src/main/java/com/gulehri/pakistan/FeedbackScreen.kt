@@ -3,8 +3,13 @@ package com.gulehri.pakistan;
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -33,8 +38,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.google.android.material.chip.Chip
 
 /*
  * Created by Shahid Iqbal on 8/16/2023.
@@ -43,16 +50,13 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun FeedbackScreen() {
 
-    val itemsList = listOf("Android", "iOS", "Windows", "MAC", "Linux")
+    val itemsList = listOf("Androidsdkhkhkhlhdslkhsdakl", "IOS", "Windows", "MAC", "Linux")
     val selectedItems = remember {
         mutableStateListOf(itemsList.getOrNull(-1))
     }
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(100.dp),
-        contentPadding = PaddingValues(10.dp),
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp)
-    ) {
+        columns = GridCells.Adaptive(90.dp),
+        contentPadding = PaddingValues(10.dp)) {
 
         items(itemsList) {
             SingleChip(label = it, selected = selectedItems.contains(it)) {
@@ -69,24 +73,22 @@ fun FeedbackScreen() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SingleChip(selected: Boolean, label: String, onClick: () -> Unit) {
-
     FilterChip(
         selected = selected,
         onClick = onClick,
         label = {
             Text(
                 text = label,
-                modifier = Modifier
-                    .padding(vertical = 10.dp)
-                    .fillMaxWidth(),
-                textAlign = TextAlign.Center
+                maxLines = 1,
+                modifier = Modifier.wrapContentWidth()
+
             )
         },
         colors = InputChipDefaults.inputChipColors(
             selectedContainerColor = Color.DarkGray,
             selectedLabelColor = Color.White,
         ),
-        modifier = Modifier.wrapContentSize()
-
+        modifier = Modifier.wrapContentWidth()
     )
+
 }
